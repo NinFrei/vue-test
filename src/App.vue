@@ -57,21 +57,37 @@
     <h2 v-else-if="number < 50">number is smaller than 50</h2>
     <h2 v-else>number is equal 50</h2>
     <br />
+
     <button @click="inStock = !inStock">Toggle</button>
-    <p v-if="inStock">There is one grill left! Hurry up</p>
+    <p v-if="inStock">There is one grill left! Hurry up!</p>
     <p v-else>Oh no 😢 no BBQ for Opportunity</p>
+
+    <!--methods-->
+    <button @click="gruezi()">Begrüssen</button>
 
     <h3>Colourful World</h3>
 
-    <img v-bind:src="imgLink" :width="logoWidth" />
+    <img v-bind:src="" :width="logoWidth"/>
+<br>
+<br>
+    <button @click="greet">Greet</button>
   </div>
 </template>
+
+
+
+
+<script>
+export default {};
+</script>
+
 
 <script>
 export default {
   name: "App",
   data() {
     return {
+      lastName: "Freiman",
       firstName: "Nina",
       age: "12",
       imgLink: require("../src/assets/logo.png"),
@@ -83,7 +99,27 @@ export default {
       quantity: 1,
       flavour: "#5B2F00",
       temp: 20,
+      inStock: false,
+      number: 55,
+      name: "Mark"
     };
+  },
+  methods: {
+    gruezi: function () {
+      alert( 'Hallo' +' '+ this.firstName +' '+ this.lastName);
+      }
+    },
+
+
+    greet: function(event) {
+// 'this' refers to the view instance
+this.say("Hi " + this.name);
+    },
+      say(message) {
+        // if a method is independent of the instance (no reference to 'this')
+        //then it could be relevant to move it to move it to a separate module
+        alert(message + "!");
+        
   },
 };
 </script>
